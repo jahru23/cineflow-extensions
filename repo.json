@@ -1,8 +1,8 @@
 {
-    "name": "Nonton Indo",
-    "description": "CloudStream 3 extensions untuk situs streaming Indonesia",
-    "manifestVersion": 1,
-    "pluginLists": [
-        "https://github.com/ExtremeBoyGG/nonton-indo/raw/main/plugins.json"
-    ]
+  "name": "CineFlow Extensions",
+  "description": "CineFlow Extensions untuk Situs Streaming Indonesia (LK21, Anichin, dll)",
+  "manifestVersion": 1,
+  "pluginLists": [
+    "https://raw.githubusercontent.com/jahru23/cineflow-extensions/builds/plugins.json"
+  ]
 }
