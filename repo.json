@@ -1,8 +1,8 @@
 {
-  "name": "nonton-indo",
-  "description": "CloudStream 3 Extensions untuk Situs Streaming Indonesia",
+  "name": "VoidStream Extensions",
+  "description": "VoidStream Extensions untuk Situs Streaming Indonesia (LK21, Anichin, dll)",
   "manifestVersion": 1,
   "pluginLists": [
-    "https://raw.githubusercontent.com/ExtremeBoyGG/nonton-indo/builds/plugins.json"
+    "https://raw.githubusercontent.com/jahru23/voidstream-extensions/builds/plugins.json"
   ]
 }
