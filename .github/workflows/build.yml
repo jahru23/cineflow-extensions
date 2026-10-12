@@ -15,6 +15,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout source
         uses: actions/checkout@v4
@@ -26,14 +28,13 @@ jobs:
         with:
           ref: "builds"
           path: "builds"
-          token: ${{ secrets.PAT_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Clean old builds
         run: |
           cd $GITHUB_WORKSPACE/builds
-          # Simpan repo.json (static metadata, bukan generated)
+          # Simpan repo.json
           cp repo.json /tmp/repo.json 2>/dev/null || true
-          # Hapus semua kecuali .git
           find . -maxdepth 1 ! -name '.git' ! -name '.' -exec rm -rf {} +
 
       - name: Setup JDK 17
@@ -56,12 +57,14 @@ jobs:
           cp build/plugins.json $GITHUB_WORKSPACE/builds/
           # Restore repo.json
           cp /tmp/repo.json $GITHUB_WORKSPACE/builds/repo.json 2>/dev/null || true
+          # Pastikan URL plugins.json mengarah ke jahru23
+          sed -i 's/ExtremeBoyGG\/nonton-indo/jahru23\/voidstream-extensions/g' $GITHUB_WORKSPACE/builds/plugins.json
 
       - name: Push builds
         run: |
           cd $GITHUB_WORKSPACE/builds
-          git config --local user.email "herilrtg123@gmail.com"
-          git config --local user.name "ExtremeBoyGG"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
           git add -A
-          git commit --amend -m "Build $GITHUB_SHA" || exit 0
-          git push --force
+          git commit -m "Auto-build plugins [skip ci]" || exit 0
+          git push origin builds
