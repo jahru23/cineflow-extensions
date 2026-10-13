@@ -57,8 +57,9 @@ jobs:
           cp build/plugins.json $GITHUB_WORKSPACE/builds/
           # Restore repo.json
           cp /tmp/repo.json $GITHUB_WORKSPACE/builds/repo.json 2>/dev/null || true
-          # Pastikan URL plugins.json mengarah ke jahru23
-          sed -i 's/ExtremeBoyGG\/nonton-indo/jahru23\/voidstream-extensions/g' $GITHUB_WORKSPACE/builds/plugins.json
+          # Pastikan URL plugins.json mengarah ke jahru23/cineflow-extensions
+          sed -i 's/ExtremeBoyGG\/nonton-indo/jahru23\/cineflow-extensions/g' $GITHUB_WORKSPACE/builds/plugins.json
+          sed -i 's/jahru23\/voidstream-extensions/jahru23\/cineflow-extensions/g' $GITHUB_WORKSPACE/builds/plugins.json
 
       - name: Push builds
         run: |
